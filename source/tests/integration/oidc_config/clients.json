@@ -1,0 +1,12 @@
+[
+  {
+    "ClientId": "ccwb-integ",
+    "ClientSecrets": [],
+    "AllowedGrantTypes": ["authorization_code", "password"],
+    "AllowedScopes": ["openid", "profile", "email"],
+    "RedirectUris": ["http://localhost:8400/callback"],
+    "RequireClientSecret": false,
+    "RequirePkce": false,
+    "AllowOfflineAccess": false
+  }
+]

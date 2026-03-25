@@ -1,0 +1,6 @@
+{
+  "IssuerUri": "http://localhost:8080",
+  "Discovery": {
+    "ResponseCacheInterval": 0
+  }
+}

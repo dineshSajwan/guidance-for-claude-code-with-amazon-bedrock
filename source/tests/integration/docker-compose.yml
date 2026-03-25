@@ -1,0 +1,16 @@
+services:
+  oidc-server:
+    image: ghcr.io/soluto/oidc-server-mock:latest
+    platform: linux/amd64
+    ports:
+      - "8080:8080"
+    environment:
+      ASPNETCORE_ENVIRONMENT: Development
+      SERVER_OPTIONS_INLINE: |
+        {"IssuerUri":"http://localhost:8080","Discovery":{"ResponseCacheInterval":0}}
+      USERS_CONFIGURATION_INLINE: |
+        [{"SubjectId":"test-user-001","Username":"test@example.com","Password":"testpass123","Claims":[{"Type":"email","Value":"test@example.com"},{"Type":"name","Value":"Test User"},{"Type":"sub","Value":"test-user-001"}]}]
+      CLIENTS_CONFIGURATION_INLINE: |
+        [{"ClientId":"ccwb-integ","ClientSecrets":[],"AllowedGrantTypes":["authorization_code","password"],"AllowedScopes":["openid","profile","email"],"RedirectUris":["http://localhost:8400/callback"],"RequireClientSecret":false,"RequirePkce":false,"AllowOfflineAccess":false}]
+      IDENTITY_RESOURCES_CONFIGURATION_INLINE: |
+        [{"Name":"openid","ClaimTypes":["sub"]},{"Name":"profile","ClaimTypes":["name","family_name","given_name"]},{"Name":"email","ClaimTypes":["email","email_verified"]}]

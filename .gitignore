@@ -52,6 +52,8 @@ FEEDBACK.md
 output.json
 *.bak
 test_*.py
+# Exception: permanent integration test suite
+!source/tests/integration/test_*.py
 
 CLAUDE.md
 
