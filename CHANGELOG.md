@@ -5,6 +5,76 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [2.3.0] - 2026-04-02
+
+### Added
+
+- cache OIDC id_token to avoid redundant browser-based re-authentication
+- add ALB JWT validation for OTEL Collector endpoint
+- Add Claude Opus 4.6 model support
+- Add sagemaker plugin with async inference skill
+- Add bedrock plugin with tool-use structured output skill
+- Add ml-training plugin with GRPO fine-tuning skill
+- Add per-user quota monitoring with fine-grained controls (#74)
+- Add profile support to builds command
+- Add AWS GovCloud partition support
+
+### Fixed
+
+- cache OTEL headers indefinitely to prevent browser popup every ~1h
+- reduce id_token expiry buffer from 10 minutes to 60 seconds
+- use configured inference profile for test instead of hardcoded legacy model IDs
+- sync pyproject.toml version with release (1.1.4 → 2.1.0)
+- add two-layer caching to otel-helper to eliminate telemetry UI freezes
+- add missing EU/AU entries for Opus 4.6 in init.py display dicts and dashboard throttle metrics
+- correct Opus 4.6 quota codes and add EU/AU CRIS profiles
+- address review comments on bedrock plugin skill
+- address review comments on async inference skill
+- rebuild nested vpc_config when loading existing profile
+- flatten vpc_config structure to match deploy expectations
+- add trailing slash to Auth0 issuer URL for quota API JWT authorizer
+- quota stack deployment looks for S3 bucket in wrong stack
+- Improve test quality and fix broken specs (#80)
+- Remove invalid 'required' parameter from quota export argument (#78)
+- GovCloud Cognito auth-fips domain and distribute profile fallback
+- Replace remaining hardcoded arn:aws: with AWS::Partition
+- Use AWS::Partition for OTEL collector log group ARNs
+- Resolve Cognito authentication issues for CLI credential process
+
+### Changed
+
+- reuse id_token from silent refresh to avoid redundant get_monitoring_token call
+
+### Other
+
+- sync pyproject.toml version to match release v2.2.0
+- fix false positive secret test
+- fix false positive secret test
+- fix false positive secret test
+- update pip: bump the pip-version-updates group
+- address semgrep issues
+- added reease workflow
+- update github-actions: bump the github-actions-version-updates group with 2 updates
+- fix github workflows
+- fix github workflows
+- update pip: bump the pip-version-updates group
+- add bandit, semgrep, scanners and cfn nag
+- mark pr and issues stale after 60 days
+- udpate depandabot
+- bump requests from 2.32.4 to 2.33.0 in /source
+- bump filelock from 3.18.0 to 3.20.3 in /source
+- bump virtualenv from 20.33.1 to 20.36.1 in /source
+- bump urllib3 from 2.6.0 to 2.6.3 in /source
+- bump urllib3 from 2.5.0 to 2.6.0 in /source (#82)
+- Consolidate GovCloud deployment to reference Quick Start
+- Simplify GovCloud deployment instructions
+- Remove China partition references from README
+- Add .claude-plugin to .gitignore
+- Remove development docs from tracking and update .gitignore
+- Update documentation with GovCloud deployment validation
+- Add FEEDBACK.md and TESTING_PARTITION_SUPPORT.md to .gitignore
+- Add comprehensive testing guide for partition support
+
 ## [2.1.0] - 2026-03-20
 
 ### Fixed
